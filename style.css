@@ -1,0 +1,22 @@
+ #meals{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+#inputId{
+    display: flex;
+}
+.meal{
+    border: 1px solid goldenrod;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    background-image: linear-gradient(45deg, rgb(25, 54, 54), rgb(7, 99, 116));
+}
+.meal-name{
+    font-size: 20px;
+    color: bisque;
+}
+#ingredients{
+    text-align: center;
+}
