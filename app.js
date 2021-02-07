@@ -1,5 +1,6 @@
 //Fetching data from The meal db
 let searchedName = '';
+let mealsDiv = document.getElementById('meals');
 document.getElementById('searchBtn').addEventListener('click', function () {
     let searchedName = document.getElementById('searchInput').value;
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchedName}`)
@@ -9,10 +10,10 @@ document.getElementById('searchBtn').addEventListener('click', function () {
         });
     searchedName = '';
     document.getElementById('searchInput').value = searchedName;
+    mealsDiv.innerHTML = '';
 });
 //Displaying data
 function displayData(data) {
-    let mealsDiv = document.getElementById('meals');
     if (data) {
         data.forEach((val) => {
             const mealDiv = document.createElement('div');
