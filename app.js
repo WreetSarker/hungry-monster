@@ -1,16 +1,18 @@
+//Fetching data from The meal db
+let searchedName = '';
 document.getElementById('searchBtn').addEventListener('click', function () {
     let searchedName = document.getElementById('searchInput').value;
-    console.log(searchedName);
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchedName}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data.meals);
             displayData(data.meals);
         });
+    searchedName = '';
+    document.getElementById('searchInput').value = searchedName;
 });
-
+//Displaying data
 function displayData(data) {
-    const mealsDiv = document.getElementById('meals');
+    let mealsDiv = document.getElementById('meals');
     if (data) {
         data.forEach((val) => {
             const mealDiv = document.createElement('div');
@@ -36,13 +38,13 @@ function displayData(data) {
         mealsDiv.innerHTML = failedInfo;
     }
 }
-
+//Showing ingredients
 function showMealInfo(data) {
     const val = data.meals[0];
     const ingredientsDiv = document.getElementById('ingredients');
     const ingredientInfo = `
         <img style="height:200px;width:200px;" src="${val.strMealThumb}" /><br>
-        <h4 class="meal-name">${val.strMeal}</h6>
+        <h4 class="meal-name">${val.strMeal}</h4>
         <h6 class="mb-4"> Ingredients</h6>
         <p>${val.strIngredient1}</p>
         <p>${val.strIngredient2}</p>
@@ -51,6 +53,13 @@ function showMealInfo(data) {
         <p>${val.strIngredient5}</p>
         <p>${val.strIngredient6}</p>
         <p>${val.strIngredient7}</p>
+        <p>${val.strIngredient8}</p>
+        <p>${val.strIngredient9}</p>
+        <p>${val.strIngredient10}</p>
+        <p>${val.strIngredient11}</p>
+        <p>${val.strIngredient12}</p>
+        <p>${val.strIngredient13}</p>
+        <p>${val.strIngredient14}</p>
         `;
     ingredientsDiv.innerHTML = ingredientInfo;
 }
